@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Casik</title>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="brython()">
+    <h1 class="game-title">Новогоднее казино</h1>
+    <div id="game">
+        <div class="balance-panel">
+            <div class="balance-label">
+                <div id="balance">Баланс: $100</div>
+            </div>
+        </div>
+        <div id="slots">
+            <div class="slot" id="slot1">❄️</div>
+            <div class="slot" id="slot2">🎄</div>
+            <div class="slot" id="slot3">🎁</div>
+        </div>
+        <div id="bet_controls">
+            <label>Ставка:</label>
+            <input type="number" id="bet" value="10" min="1" max="1000">
+            <button id="spin">Крутить!</button>
+        </div>
+        <div id="result"></div>
+    </div>
+
+    <div class="snow-wrapper" aria-hidden="true">
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+        <div class="snow"></div>
+    </div>
+
+    <script type="text/python" src="script.py"></script>
+</body>
+</html>
