@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Clicker</title>
+</head>
+<body onload="brython()">
+    <div id="levels">
+        <h1>Игра кликер</h1>
+        <h2>Выбор уровня:</h2>
+        <div id="level_btns">
+            <button id="lvl1">Первый уровень</button>
+            <button id="lvl2">Второй уровень</button>
+            <button id="lvl3">Третий уровень</button>
+        </div>
+    </div>
+
+    <div id="app">
+        <h1>Игра кликер</h1>
+        <div id="leave_container">
+            <button id="leave_btn">| |</button>
+        </div>
+
+        <div id="container">
+            <div id="buttons">
+                <button id="btn1">+1</button>
+                <button id="btn5">+5</button>
+                <button id="btn10">+10</button>
+                <button id="btn100">+100</button>
+                <button id="btn_final">+1000</button>
+                <button id="shop">Магазин</button>
+            </div>
+            <div id="output"></div>
+        </div>
+
+        <div id="shop_menu">
+            <div id="buy_btns">
+                <button id="5cl">Купить +5 кликов --цена: 5</button>
+                <button id="10cl">Купить +10 кликов --цена: 15</button>
+                <button id="100cl">Купить +100 кликов --цена: 150</button>
+                <button id="FINALcl">Купить +1000 кликов --цена: 1500</button>
+            </div>
+            <div id="close_container">
+                <button id="close_shop">Закрыть магазин</button>
+            </div>
+        </div>
+
+        <div id="final">
+            <h2>Поздравляю ты прошел мою игру!</h2>
+            <div id="final_text">Хочешь начать заново? (если нет просто выйди)</div>
+            <button id="return">Да</button>
+        </div>
+    </div>
+
+    <script type="text/python" src="script.py"></script>
+</body>
+</html>
