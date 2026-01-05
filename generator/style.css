@@ -1,0 +1,454 @@
+/* ===== СБРОС И БАЗОВЫЕ СТИЛИ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: linear-gradient(180deg, #0c1b2d 0%, #1a2b3c 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===== СНЕЖИНКИ CSS ===== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background-image:
+        /* Снежинки разных размеров и позиций */
+        radial-gradient(circle at 10% 5%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 40% 35%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 60% 55%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 70% 65%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 80% 75%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 90% 85%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+        radial-gradient(circle at 95% 95%, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+    background-size: 200px 200px;
+    animation: snowMove 60s linear infinite;
+}
+
+/* Альтернатива: простые точки как снежинки */
+.snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snow::before,
+.snow::after {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, white 1px, transparent 1px),
+        radial-gradient(circle at 40% 40%, white 1px, transparent 1px),
+        radial-gradient(circle at 60% 20%, white 1px, transparent 1px),
+        radial-gradient(circle at 80% 60%, white 1px, transparent 1px),
+        radial-gradient(circle at 30% 70%, white 1px, transparent 1px),
+        radial-gradient(circle at 70% 30%, white 1px, transparent 1px),
+        radial-gradient(circle at 90% 50%, white 1px, transparent 1px),
+        radial-gradient(circle at 10% 10%, white 1px, transparent 1px);
+    background-size: 300px 300px;
+    opacity: 0.3;
+    animation: snowfall 20s linear infinite;
+}
+
+.snow::after {
+    background-size: 400px 400px;
+    animation: snowfall 15s linear infinite;
+    animation-delay: -10s;
+    opacity: 0.2;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes snowMove {
+    0% {
+        background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+    }
+    100% {
+        background-position: 200px 200px, 200px 200px, 200px 200px, 200px 200px,
+                            200px 200px, 200px 200px, 200px 200px, 200px 200px,
+                            200px 200px, 200px 200px;
+    }
+}
+
+/* ===== ШАПКА ===== */
+#title {
+    font-size: 3.2rem;
+    margin: 20px 0 10px 0;
+    text-align: center;
+    font-weight: 700;
+    color: #4facfe;
+    text-shadow: 0 2px 10px rgba(79, 172, 254, 0.3);
+    position: relative;
+    z-index: 2; /* Выше снежинок */
+}
+
+/* Добавляем замок перед текстом с корректной кодировкой */
+#title::before {
+    content: '🔐';
+    margin-right: 15px;
+    font-size: 3rem;
+    filter: drop-shadow(0 2px 3px rgba(79, 172, 254, 0.4));
+}
+
+#subtitle {
+    font-size: 1.1rem;
+    color: #a0b4c8;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 400;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== ОСНОВНОЙ КОНТЕЙНЕР ===== */
+#app {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2; /* Выше снежинок */
+}
+
+#container {
+    background: rgba(25, 40, 60, 0.9);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    border: 1px solid rgba(100, 150, 255, 0.2);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+#container:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== КОНТЕЙНЕР ВВОДА ===== */
+#input-container {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.tip {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #c3d4e5;
+    font-weight: 500;
+}
+
+#input {
+    width: 100%;
+    max-width: 280px;
+    padding: 18px 25px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(100, 150, 255, 0.3);
+    border-radius: 14px;
+    color: white;
+    text-align: center;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+#input:focus {
+    border-color: #4facfe;
+    box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+#input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Стили для стрелок в числовом поле */
+#input::-webkit-inner-spin-button {
+    height: 40px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+/* ===== КНОПКА ГЕНЕРАЦИИ ===== */
+#generate-btn-container {
+    margin: 25px 0 35px 0;
+    text-align: center;
+}
+
+#generate-btn {
+    padding: 18px 45px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#generate-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+#generate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(79, 172, 254, 0.4);
+}
+
+#generate-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+#generate-btn:active {
+    transform: translateY(0);
+}
+
+/* ===== КОНТЕЙНЕР РЕЗУЛЬТАТА ===== */
+#result-container {
+    background: rgba(15, 30, 50, 0.7);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(100, 150, 255, 0.25);
+    transition: all 0.3s ease;
+}
+
+#result-container:hover {
+    border-color: rgba(79, 172, 254, 0.4);
+}
+
+#result {
+    font-size: 1.5rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-weight: 500;
+    text-align: center;
+    color: #d8e4f0;
+}
+
+/* Стиль для пароля */
+.password-display {
+    font-family: 'Courier New', monospace;
+    color: #4facfe;
+    font-weight: 700;
+    font-size: 1.9rem;
+    padding: 15px 20px;
+    border-radius: 12px;
+    background-color: rgba(15, 30, 50, 0.8);
+    border: 1px solid rgba(79, 172, 254, 0.4);
+    letter-spacing: 1px;
+    word-break: break-all;
+    box-shadow:
+        inset 0 0 10px rgba(0, 0, 0, 0.3),
+        0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.password-display:hover {
+    box-shadow:
+        inset 0 0 15px rgba(79, 172, 254, 0.2),
+        0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 30px 15px;
+    }
+
+    #title {
+        font-size: 2.5rem;
+    }
+
+    #title::before {
+        font-size: 2.3rem;
+        margin-right: 10px;
+    }
+
+    #subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    #container {
+        padding: 30px 25px;
+        border-radius: 20px;
+    }
+
+    .tip {
+        font-size: 1.2rem;
+    }
+
+    #input {
+        font-size: 1.4rem;
+        padding: 16px 20px;
+        max-width: 250px;
+    }
+
+    #generate-btn {
+        padding: 16px 35px;
+        font-size: 1.2rem;
+    }
+
+    #result-container {
+        padding: 25px 20px;
+    }
+
+    #result {
+        font-size: 1.3rem;
+    }
+
+    .password-display {
+        font-size: 1.6rem;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #title {
+        font-size: 2rem;
+    }
+
+    #title::before {
+        font-size: 1.8rem;
+    }
+
+    #container {
+        padding: 25px 20px;
+    }
+
+    #input {
+        font-size: 1.3rem;
+        padding: 14px 18px;
+        max-width: 220px;
+    }
+
+    .password-display {
+        font-size: 1.4rem;
+    }
+}
+
+/* ===== ДОПОЛНИТЕЛЬНАЯ ИНФОРМАЦИЯ ===== */
+.security-tip {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background: rgba(79, 172, 254, 0.1);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: #a0b4c8;
+    text-align: center;
+    border: 1px solid rgba(79, 172, 254, 0.2);
+    max-width: 600px;
+}
+
+.security-tip p {
+    margin: 5px 0;
+}
+
+/* ===== ПРОСТЫЕ СНЕЖИНКИ (альтернативный способ) ===== */
+.snow-simple {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+    background-image:
+        radial-gradient(1px 1px at 10px 20px, white 50%, transparent),
+        radial-gradient(1px 1px at 40px 70px, white 50%, transparent),
+        radial-gradient(1px 1px at 80px 40px, white 50%, transparent),
+        radial-gradient(1px 1px at 120px 90px, white 50%, transparent),
+        radial-gradient(1px 1px at 160px 30px, white 50%, transparent),
+        radial-gradient(1px 1px at 200px 60px, white 50%, transparent),
+        radial-gradient(1px 1px at 240px 80px, white 50%, transparent),
+        radial-gradient(1px 1px at 280px 20px, white 50%, transparent),
+        radial-gradient(1px 1px at 320px 50px, white 50%, transparent),
+        radial-gradient(1px 1px at 360px 70px, white 50%, transparent);
+    background-size: 400px 400px;
+    animation: snowDrift 30s linear infinite;
+}
+
+@keyframes snowDrift {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 400px 400px;
+    }
+}

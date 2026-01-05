@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор паролей</title>
+    <h1 id="title">Генератор паролей</h1>
+    <p id="subtitle">by FasTek (FTK DEV)</p>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10/brython_stdlib.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="brython()">
+    <div id="app">
+        <div  id="container">
+            <div id="input-container">
+                <p class="tip">Введите длину пароля: </p>
+                <input type="number" id="input">
+            </div>
+            <div id="generate-btn-container">
+                <button id="generate-btn">Сгенерировать</button>
+            </div>
+            <div id="result-container">
+                <div id="result">Ваш пароль: </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/python" src="script.py"></script>
+</body>
+</html>
