@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кликер ПРО</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="snow-container" id="snow-container"></div>
+
+        <a href="../index.html" class="home-link">← На главную</a>
+
+        <!-- Экран выбора уровней -->
+        <div id="levels-screen">
+            <div class="levels-header">
+                <h2>Выберите уровень</h2>
+                <button id="back-to-main" class="back-btn">← Назад</button>
+            </div>
+            <div id="levels-container">
+                <div id="levels-list">
+                    <button class="level-btn" data-level="easy">
+                        <span class="level-name">Легкий</span>
+                        <span class="level-goal">Цель: 1000 кликов</span>
+                        <span class="level-desc">Для начинающих</span>
+                    </button>
+                    <button class="level-btn" data-level="normal">
+                        <span class="level-name">Нормальный</span>
+                        <span class="level-goal">Цель: 10000 кликов</span>
+                        <span class="level-desc">Для опытных игроков</span>
+                    </button>
+                    <button class="level-btn" data-level="hard">
+                        <span class="level-name">Сложный</span>
+                        <span class="level-goal">Цель: 100000 кликов</span>
+                        <span class="level-desc">Для мастеров клика</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Игровой экран -->
+        <div id="game-screen">
+            <div class="game-header">
+                <h1 class="game-title">Кликер ПРО</h1>
+                <button id="leave" class="exit-btn">✕</button>
+            </div>
+            <div id="button-container">
+                <div class="button-grid">
+                    <button id="btn" class="grid-btn main-btn">+1</button>
+                    <button id="btn5" class="grid-btn">+5</button>
+                    <button id="btn10" class="grid-btn">+10</button>
+                    <button id="btn100" class="grid-btn">+100</button>
+                    <button id="btn1000" class="grid-btn">+1000</button>
+                </div>
+                <div class="button-grid secondary">
+                    <button id="clear" class="grid-btn danger-btn">Очистить</button>
+                    <button id="shop-btn" class="grid-btn shop-btn">Магазин</button>
+                </div>
+            </div>
+            <div id="result-container">
+                <div id="output">Очки: 0 | Цель: 100</div>
+            </div>
+            
+            <div id="shop-menu">
+                <h3>Магазин улучшений</h3>
+                <div id="buy-btns">
+                    <button id="buy5cl" class="grid-btn">Купить +5 кликов -- цена: 10</button>
+                    <button id="buy10cl" class="grid-btn">Купить +10 кликов -- цена: 15</button>
+                    <button id="buy100cl" class="grid-btn">Купить +100 кликов -- цена: 150</button>
+                    <button id="buy1000cl" class="grid-btn">Купить +1000 кликов -- цена: 1500</button>
+                    <button id="buy-autoclicker" class="grid-btn disabled">Автокликер -- цена: 15₽ ($0.15)</button>
+                </div>
+                <button id="close-shop">Закрыть магазин</button>
+            </div>
+        </div>
+
+        <!-- Главный экран -->
+        <div id="main-screen">
+            <div id="main-container">
+                <h1>Кликер ПРО</h1>
+                <p class="game-description">
+                    Кликай, зарабатывай очки и покупай улучшения!<br>
+                    Пройди все 3 уровня сложности и стань мастером клика!
+                </p>
+                <button id="start-btn" class="grid-btn">Начать игру</button>
+                <p class="author">© FTK Dev</p>
+            </div>
+        </div>
+
+        <!-- Экран победы -->
+        <div id="victory-screen">
+            <div id="victory-container">
+                <h2>Поздравляем!</h2>
+                <div id="victory-icon">🏆</div>
+                <p id="victory-level-name">Уровень: Легкий</p>
+                <p id="victory-result">Ваш результат: 0 кликов</p>
+                <button id="menu-btn" class="grid-btn">В меню</button>
+            </div>
+        </div>
+            
+        <script src="script.js"></script>
+        <script src="levels.js"></script>
+        <script src="dev.js"></script>
+    </body>
+</html>
